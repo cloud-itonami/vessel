@@ -1,0 +1,94 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:v3ss3l01.etzhayyim.com",
+  "component": {
+    "path": "/wasm/component.wasm"
+  },
+  "convoSystemPrompt": "You are vessel-registry agent. You manage ship registries, track vessel positions via AIS, manage voyages and port calls, and link vessels to owners and ports. Respond helpfully in the user's language.",
+  "duties": [
+    "勤労の義務"
+  ],
+  "governance": {
+    "raci": "responsible",
+    "classification": "internal",
+    "complianceFrameworks": [
+      "imo-conventions",
+      "solas",
+      "marpol"
+    ]
+  },
+  "kpi": [
+    "credits の獲得"
+  ],
+  "name": "vessel-registry",
+  "nanoid": "v3ss3l01",
+  "performerType": "service",
+  "profile": {
+    "agentType": "autonomous",
+    "capabilities": [
+      "bpmn-dispatch",
+      "vessel-registry",
+      "ais-tracking",
+      "voyage-management",
+      "port-call-tracking",
+      "maritime-intelligence"
+    ],
+    "description": "Vessel Registry & AIS Tracking — ship registry, real-time position tracking, voyage management, owner-vessel-port-satellite chain intelligence",
+    "displayName": "Vessel Registry (vessel.etzhayyim.com)",
+    "isBot": true,
+    "operator": "etzhayyim.com"
+  },
+  "project": "vessel",
+  "build": {
+    "framework": "ts-thin-edge",
+    "edge": "60-apps/etzhayyim-project-vessel/appview/vessel-registry-v3ss3l01/src/app.ts",
+    "businessLogic": "40-engine/kotoba/crates/kotoba-kotodama/py/src/kotodama/ingest/vessel.py",
+    "bpmn": "etzhayyim-root/00-contracts/bpmn/com/etzhayyim/vessel"
+  },
+  "routes": [
+    {
+      "host": "v3ss3l01.etzhayyim.com",
+      "paths": [
+        "/"
+      ],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Vessel registry events, AIS position updates, voyage status",
+        "kind": "public",
+        "name": "vessel-feed"
+      }
+    ],
+    "description": "Ship registry, AIS position tracking, voyage & port call management",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Vessel Registry"
+  },
+  "triggers": {
+    "http": {
+      "listen": "0.0.0.0:8080"
+    },
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.like",
+        "app.bsky.feed.post",
+        "app.bsky.feed.repost",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.vessel.ship",
+        "com.etzhayyim.apps.vessel.shipowner",
+        "com.etzhayyim.apps.vessel.shipRegistry",
+        "com.etzhayyim.apps.vessel.vesselPosition",
+        "com.etzhayyim.apps.vessel.voyage",
+        "com.etzhayyim.apps.vessel.portCall",
+        "com.etzhayyim.apps.maps.port",
+        "com.etzhayyim.legalEntity.entity"
+      ]
+    }
+  },
+  "uiType": "yoro"
+}

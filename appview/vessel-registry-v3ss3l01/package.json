@@ -1,0 +1,13 @@
+{
+  "name": "vessel-registry-v3ss3l01",
+  "version": "1.0.0",
+  "description": "vessel — ship registry, AIS position tracking, voyage management, owner→vessel→port→satellite chain",
+  "main": "src/app.ts",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "kotodama-v3ss3l01",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_CAPABILITIES": "[\"bpmn-dispatch\",\"vessel-registry\",\"ais-tracking\",\"voyage-management\",\"port-call-tracking\",\"maritime-intelligence\"]",
+    "APP_DESCRIPTION": "Vessel Registry & AIS Tracking - ship registry, real-time position tracking, voyage management, owner-vessel-port-satellite chain intelligence",
+    "APP_DISPLAY_NAME": "Vessel Registry (vessel.etzhayyim.com)",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "v3ss3l01",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "yoro",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "routes": [
+    {
+      "pattern": "v3ss3l01.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    },
+    {
+      "pattern": "vessel.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

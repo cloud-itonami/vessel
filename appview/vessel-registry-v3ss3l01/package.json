@@ -1,13 +1,12 @@
 {
-  "name": "vessel-registry-v3ss3l01",
-  "version": "1.0.0",
-  "description": "vessel — ship registry, AIS position tracking, voyage management, owner→vessel→port→satellite chain",
-  "main": "src/app.ts",
+  "name": "vessel-registry-v3ss3l01-cljs",
+  "private": true,
   "type": "module",
-  "scripts": {
-    "typecheck": "tsc --noEmit"
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "typescript": "^6.0.2"
+    "shadow-cljs": "2.28.20"
   }
 }

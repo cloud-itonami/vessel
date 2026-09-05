@@ -1,6 +1,6 @@
 ;; shadow-cljs build for the vessel appview UI (migrated from svelte).
-{:source-paths ["src"]
- :dependencies [[reagent "1.2.0"]]
+{:deps {:aliases [:cljs]}
+ :source-paths ["src"]
  :builds
  {:app {:target :browser
         :output-dir "web/dist/js"

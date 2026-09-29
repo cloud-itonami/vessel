@@ -15,11 +15,11 @@ anything else.
 
 ```bash
 git grep -icE 'imo' -- .
-#   CLAUDE.md:6
+#   AGENTS.md:6
 #   appview/vessel-registry-v3ss3l01/kotodama.jsonld:1
 ```
 
-Two files. `CLAUDE.md` says "105K merchant vessels (IMO + Lloyd's). Path-based DID
+Two files. `AGENTS.md` says "105K merchant vessels (IMO + Lloyd's). Path-based DID
 per IMO 7-digit number", and the manifest mentions it once. **No source file
 mentions IMO at all**, so there is no parsing of one, no primary-key handling, and
 in particular no check-digit validation.
@@ -32,7 +32,7 @@ equally, and only one of those is a valid IMO number.
 
 ## 2. ⚠ The documented DID is not the DID the code uses ✅
 
-`CLAUDE.md` states the scheme, and the whole cross-actor design rests on it:
+`AGENTS.md` states the scheme, and the whole cross-actor design rests on it:
 
 > `did:web:vessel.etzhayyim.com:imo:{IMO}` — physical
 > `did:web:oil-shipping.etzhayyim.com:tanker:imo:{IMO}` — commercial
@@ -55,12 +55,12 @@ Two differences, not one:
 | host | `vessel.etzhayyim.com` | `v3ss3l01.etzhayyim.com` — the nanoid subdomain |
 | per-vessel segment | `:imo:{IMO}` | **absent** |
 
-So there is one DID for the service, not one per vessel. `CLAUDE.md` declares three
+So there is one DID for the service, not one per vessel. `AGENTS.md` declares three
 cross-actor joins that depend on a per-vessel identifier — `cargo` on `vesselDid`,
 `crew` on `currentVesselDid`, `bunker` on `vesselDid` — and the string `vesselDid`
 appears in **no code in this repository**. Those joins have nothing to join on yet.
 
-**The nanoid in the documentation is also wrong.** `CLAUDE.md` line 5 says
+**The nanoid in the documentation is also wrong.** `AGENTS.md` line 5 says
 `nanoid: vessel01`; `kotodama.jsonld` (4 mentions) and `wrangler.jsonc` (3) say
 `v3ss3l01`, and so does the running facade. Since the nanoid is the DID's host
 label, the documented DID cannot be right even in its host part.
@@ -127,7 +127,7 @@ file in the repository. From a file listing this reads like a tested repository.
 Not to run this — §3 is the whole of what runs. It is to settle which identity
 scheme is real, because §2 is not a documentation slip: if the per-IMO DID is
 intended, then the code emits the wrong DID and the three cross-actor joins are
-unimplemented; if the service DID is intended, then `CLAUDE.md`'s "same IMO, two
+unimplemented; if the service DID is intended, then `AGENTS.md`'s "same IMO, two
 DIDs" design and its join table describe something else. That is the app owner's
 call and this document does not make it.
 
